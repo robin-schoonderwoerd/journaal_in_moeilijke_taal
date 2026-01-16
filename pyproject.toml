@@ -1,7 +1,8 @@
 [project]
-name = "journaal_in_makkelijke_taal"
+name = "jimt"
 version = "0.1.0"
 description = "Add your description here"
+classifiers = ["Private :: Do Not Upload"]
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
@@ -10,6 +11,21 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = [
-    "pre-commit>=4.3.0",
-]
+    dev = [
+        "pre-commit>=4.3.0",
+        {include-group = "lint"},
+        {include-group = "test"},
+    ]
+    lint = [
+        "ruff==0.14.13",
+        "mypy==1.19.1",
+    ]
+    test = [
+    ]
+
+[build-system]
+    requires = ["uv_build>=0.9.11,<0.10.0"]
+    build-backend = "uv_build"
+
+[tool.uv]
+    package = true
